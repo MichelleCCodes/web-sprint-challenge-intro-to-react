@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import CharacterList from './components/CharacterList';
 
 const App = () => {
 
-  const { character, setCharacter } = useState([]);
+const [ characters, setCharacter ] = useState([]);
 
-useEffect(()=>{
-  axios
-  .get('https://swapi.dev/api/people/')
-  .then(res=>{
-    console.log(res.data.results) // a list of ten characters in an array 
-    setCharacter(res.data.results)
-  })
-  .catch(err=>{
-    console.log("You have an error :'(")
-  })
+ useEffect(()=>{
+   const fetchCharacters = () => {
+    axios
+    .get('https://swapi.dev/api/people/')
+    .then(res=>{
+      // console.log(res.data.results)
+      setCharacter(res.data.results)
+    })
+    .catch(err=>{
+      console.log("You have an error :'(")
+    })
+   }
+   fetchCharacters();
 }, [])
 
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -28,6 +31,7 @@ useEffect(()=>{
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      <CharacterList characters={characters}/>
     </div>
   );
 }
