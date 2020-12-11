@@ -5,13 +5,14 @@ import './App.css';
 
 const App = () => {
 
-  const { character, setCharacter } = useState(null);
+  const { character, setCharacter } = useState([]);
 
 useEffect(()=>{
   axios
   .get('https://swapi.dev/api/people/')
   .then(res=>{
-    console.log(res.data.results)
+    console.log(res.data.results) // a list of ten characters in an array 
+    setCharacter(res.data.results)
   })
   .catch(err=>{
     console.log("You have an error :'(")
