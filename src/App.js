@@ -29,8 +29,8 @@ const [ characters, setCharacter ] = useState([]);
   // sync up with, if any.
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
+    <div className="App container">
+      <h1 className="Header">Star Wars Starring Characters</h1>
       <CharacterList characters={characters}/>
     </div>
   );
