@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import CharacterList from './components/CharacterList';
+import styled from 'styled-components'
+
+const Header = styled.h1`
+font-family: 'Monoton', cursive;
+letter-spacing: 3px; 
+font-size: 2em; 
+color: #3b3832;
+`
 
 const App = () => {
 
@@ -30,10 +38,16 @@ const [ characters, setCharacter ] = useState([]);
 
   return (
     <div className="App container">
-      <h1 className="Header">Star Wars Starring Characters</h1>
+      <Header>Star Wars Starring Characters</Header>
       <CharacterList characters={characters}/>
     </div>
   );
 }
 
 export default App;
+
+
+{/* <div className="App container">
+      <h1 className="Header">Star Wars Starring Characters</h1>
+      <CharacterList characters={characters}/>
+    </div> */}
